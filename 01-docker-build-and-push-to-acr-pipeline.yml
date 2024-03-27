@@ -28,6 +28,8 @@ stages:
     pool: Default
      # vmImage: $(vmImageName)
     steps:
+    - script: |
+        echo "User who triggered the pipeline: $(Build.RequestedFor)"
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
@@ -38,8 +40,7 @@ stages:
         tags: |
           $(tag)
           steps:
-    - script: |
-       echo "Username: $(Build.RequestedFor)"
+   
 
     
 
